@@ -2,7 +2,7 @@
   "venues": [
     {
       "name": "AECC, Bridge of Don, Aberdeen",
-      "image": "",
+      "image": "/img/venues/aecc2.webp",
       "address": ""
     },
     {
@@ -12,7 +12,7 @@
     },
     {
       "name": "Barrowland Ballroom",
-      "image": "/img/venues/image-17457136.jpg",
+      "image": "",
       "address": "244 Gallowgate, Glasgow"
     },
     {
@@ -37,12 +37,12 @@
     },
     {
       "name": "Edinburgh Playhouse",
-      "image": "",
+      "image": "/img/venues/playhouse.webp",
       "address": ""
     },
     {
       "name": "Eventim Apollo, London",
-      "image": "/img/venues/eventim2.jpg",
+      "image": "",
       "address": "45 Queen Caroline Street, London"
     },
     {
@@ -62,12 +62,12 @@
     },
     {
       "name": "King Tut's Wah Wah Hut",
-      "image": "/img/venues/ChatGPT Image Aug 26, 2026, 03_13_39 PM.webp",
+      "image": "/img/venues/kingtuts.webp",
       "address": "272 St Vincent Street, Glasgow"
     },
     {
       "name": "O2 ABC Glasgow",
-      "image": "",
+      "image": "/img/venues/o2abcx.webp",
       "address": "330 Sauchiehall Street, Glasgow"
     },
     {
@@ -82,7 +82,7 @@
     },
     {
       "name": "OVO Hydro (SSE Hydro)",
-      "image": "/img/venues/iStock-965742904-452641655.jpg",
+      "image": "",
       "address": "Exhibition Way, Finnieston, Glasgow"
     },
     {
@@ -97,7 +97,7 @@
     },
     {
       "name": "Stereo, Glasgow",
-      "image": "/img/venues/stereo.jpg",
+      "image": "",
       "address": "20-28 Renfield Lane, Glasgow"
     },
     {
@@ -107,12 +107,12 @@
     },
     {
       "name": "The Art School, Glasgow",
-      "image": "/img/venues/artschool.jpg",
+      "image": "",
       "address": "20 Scott Street, Glasgow"
     },
     {
       "name": "The Garage, Glasgow",
-      "image": "/img/venues/Bad-Omens-1-48.jpg",
+      "image": "",
       "address": "490 Sauchiehall Street, Glasgow"
     },
     {
@@ -122,12 +122,12 @@
     },
     {
       "name": "Usher Hall, Edinburgh",
-      "image": "",
+      "image": "/img/venues/usherhall.webp",
       "address": "Lothian Road, Edinburgh"
     },
     {
       "name": "Òran Mór, Glasgow",
-      "image": "/img/venues/oranmor.jpg",
+      "image": "",
       "address": "731 Great Western Road, Glasgow"
     }
   ]
