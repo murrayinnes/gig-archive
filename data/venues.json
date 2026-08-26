@@ -1,0 +1,134 @@
+{
+ "venues": [
+  {
+   "name": "AECC, Bridge of Don, Aberdeen",
+   "image": "img/venues/aecc.webp",
+   "address": ""
+  },
+  {
+   "name": "Balado Airfield, by Kinross",
+   "image": "img/venues/tinthepark.webp",
+   "address": ""
+  },
+  {
+   "name": "Barrowland Ballroom",
+   "image": "img/venues/barrowlandsx.webp",
+   "address": "244 Gallowgate, Glasgow"
+  },
+  {
+   "name": "Bellahouston Park",
+   "image": "",
+   "address": ""
+  },
+  {
+   "name": "Broadcast, Glasgow",
+   "image": "",
+   "address": "427 Sauchiehall Street, Glasgow"
+  },
+  {
+   "name": "Captain's Rest (closed 2012)",
+   "image": "",
+   "address": "185 Great Western Road, Glasgow"
+  },
+  {
+   "name": "EartH, London",
+   "image": "",
+   "address": "11-17 Stoke Newington Road, London"
+  },
+  {
+   "name": "Edinburgh Playhouse",
+   "image": "",
+   "address": ""
+  },
+  {
+   "name": "Eventim Apollo, London",
+   "image": "img/venues/eventimapollo.webp",
+   "address": "45 Queen Caroline Street, London"
+  },
+  {
+   "name": "Glasgow Green",
+   "image": "",
+   "address": ""
+  },
+  {
+   "name": "Hampden Park",
+   "image": "",
+   "address": ""
+  },
+  {
+   "name": "Ivory Blacks (closed)",
+   "image": "",
+   "address": ""
+  },
+  {
+   "name": "King Tut's Wah Wah Hut",
+   "image": "img/venues/kingtuts.webp",
+   "address": "272 St Vincent Street, Glasgow"
+  },
+  {
+   "name": "O2 ABC Glasgow",
+   "image": "img/venues/o2abc.webp",
+   "address": "330 Sauchiehall Street, Glasgow"
+  },
+  {
+   "name": "O2 Academy Glasgow",
+   "image": "img/venues/oracademy.webp",
+   "address": "121 Eglinton Street, Glasgow"
+  },
+  {
+   "name": "O2 Apollo Manchester",
+   "image": "",
+   "address": ""
+  },
+  {
+   "name": "OVO Hydro (SSE Hydro)",
+   "image": "img/venues/ssehydro.webp",
+   "address": "Exhibition Way, Finnieston, Glasgow"
+  },
+  {
+   "name": "Royal Highland Showgrounds, Edinburgh",
+   "image": "img/venues/royalhighlandshowground.webp",
+   "address": "Ingliston, Edinburgh"
+  },
+  {
+   "name": "SEC Centre (SECC)",
+   "image": "img/venues/sec.webp",
+   "address": "Exhibition Way, Finnieston, Glasgow"
+  },
+  {
+   "name": "Stereo, Glasgow",
+   "image": "",
+   "address": "20-28 Renfield Lane, Glasgow"
+  },
+  {
+   "name": "Strathclyde Students' Union",
+   "image": "",
+   "address": ""
+  },
+  {
+   "name": "The Art School, Glasgow",
+   "image": "",
+   "address": "20 Scott Street, Glasgow"
+  },
+  {
+   "name": "The Garage, Glasgow",
+   "image": "img/venues/garage.webp",
+   "address": "490 Sauchiehall Street, Glasgow"
+  },
+  {
+   "name": "The Queen's Hall, Edinburgh",
+   "image": "",
+   "address": "85-89 Clerk Street, Edinburgh"
+  },
+  {
+   "name": "Usher Hall, Edinburgh",
+   "image": "img/venues/usherhall.webp",
+   "address": "Lothian Road, Edinburgh"
+  },
+  {
+   "name": "Òran Mór, Glasgow",
+   "image": "img/venues/oranmor.webp",
+   "address": "731 Great Western Road, Glasgow"
+  }
+ ]
+}
