@@ -1321,6 +1321,26 @@
       "thumb": "img/tickets/lucy-glasgow_t.webp",
       "note": "",
       "foil": []
+    },
+    {
+      "id": 78,
+      "date": "2012-10-26",
+      "artist": "The Killers",
+      "support": "",
+      "venue": "SECC",
+      "canon": "SEC Centre (SECC)",
+      "addr": "",
+      "city": "Glasgow",
+      "cat": "Music",
+      "promoter": "",
+      "face": 35,
+      "fee": 5,
+      "doors": "7",
+      "ref": "STANDING",
+      "image": "/img/tickets/thekillers_generated.png",
+      "thumb": "",
+      "note": "",
+      "foil": []
     }
   ]
 }
