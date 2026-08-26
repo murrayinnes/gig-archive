@@ -7,7 +7,7 @@
     },
     {
       "name": "Balado Airfield, by Kinross",
-      "image": "img/venues/tinthepark.webp",
+      "image": "",
       "address": ""
     },
     {
@@ -42,7 +42,7 @@
     },
     {
       "name": "Eventim Apollo, London",
-      "image": "img/venues/eventimapollo.webp",
+      "image": "",
       "address": "45 Queen Caroline Street, London"
     },
     {
@@ -87,7 +87,7 @@
     },
     {
       "name": "Royal Highland Showgrounds, Edinburgh",
-      "image": "img/venues/royalhighlandshowground.webp",
+      "image": "",
       "address": "Ingliston, Edinburgh"
     },
     {
@@ -127,7 +127,7 @@
     },
     {
       "name": "Òran Mór, Glasgow",
-      "image": "img/venues/oranmor.webp",
+      "image": "",
       "address": "731 Great Western Road, Glasgow"
     }
   ]
