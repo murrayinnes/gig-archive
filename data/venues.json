@@ -2,7 +2,7 @@
   "venues": [
     {
       "name": "AECC, Bridge of Don, Aberdeen",
-      "image": "/img/venues/aecc.webp",
+      "image": "",
       "address": ""
     },
     {
@@ -37,7 +37,7 @@
     },
     {
       "name": "Edinburgh Playhouse",
-      "image": "/img/venues/playhouse.webp",
+      "image": "",
       "address": ""
     },
     {
@@ -52,7 +52,7 @@
     },
     {
       "name": "Hampden Park",
-      "image": "/img/venues/beyonce-and-jay-z-at-hampden-park.jpg",
+      "image": "",
       "address": ""
     },
     {
@@ -67,7 +67,7 @@
     },
     {
       "name": "O2 ABC Glasgow",
-      "image": "/img/venues/o2abcx.webp",
+      "image": "",
       "address": "330 Sauchiehall Street, Glasgow"
     },
     {
@@ -77,7 +77,7 @@
     },
     {
       "name": "O2 Apollo Manchester",
-      "image": "/img/venues/o2apollomanchester.webp",
+      "image": "",
       "address": ""
     },
     {
@@ -87,7 +87,7 @@
     },
     {
       "name": "Royal Highland Showgrounds, Edinburgh",
-      "image": "/img/venues/chappell.jpg",
+      "image": "",
       "address": "Ingliston, Edinburgh"
     },
     {
@@ -122,7 +122,7 @@
     },
     {
       "name": "Usher Hall, Edinburgh",
-      "image": "/img/venues/usherhall.webp",
+      "image": "",
       "address": "Lothian Road, Edinburgh"
     },
     {
