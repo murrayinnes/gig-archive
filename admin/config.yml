@@ -82,6 +82,34 @@ collections:
               - { label: Note, name: note, widget: text, required: false,
                   hint: Shown under the ticket details. Leave empty to hide it. }
 
+              - label: Spotify
+                name: spotify
+                widget: string
+                required: false
+                hint: >-
+                  Paste a Spotify share link for a track or album — Share → Copy
+                  link. A bare ID or a spotify: URI works too. Leave empty for no
+                  player.
+
+              - label: Media
+                name: media
+                widget: list
+                required: false
+                collapsed: true
+                summary: '{{fields.caption}}'
+                label_singular: item
+                hint: Photos from the night, or YouTube videos of the show.
+                fields:
+                  - label: Photo
+                    name: image
+                    widget: image
+                    required: false
+                    media_folder: /img/media
+                    public_folder: img/media
+                  - { label: YouTube, name: youtube, widget: string, required: false,
+                      hint: 'A full YouTube link, or just the 11-character ID.' }
+                  - { label: Caption, name: caption, widget: string, required: false }
+
               - label: Foil areas
                 name: foil
                 widget: list

@@ -222,6 +222,29 @@ dl.facts a:hover{border-color:var(--paper)}
 .media{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:9px}
 .slot{aspect-ratio:16/10;border:1px dashed var(--hair);display:grid;place-items:center;
   text-align:center;font-size:11px;color:var(--mute);padding:8px}
+.mthumb{position:relative;aspect-ratio:16/10;overflow:hidden;cursor:pointer;
+  border:1px solid var(--hair);transition:.16s}
+.mthumb:hover{border-color:#fff;transform:translateY(-2px)}
+.mthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.mthumb .tag{position:absolute;left:0;right:0;bottom:0;padding:5px 7px;font-size:11px;
+  color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.85));
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mthumb .play{position:absolute;inset:0;display:grid;place-items:center;
+  background:rgba(3,4,12,.42);font-size:22px;color:#fff}
+.mthumb:hover .play{background:rgba(3,4,12,.2)}
+.spotify{margin:26px 0 0}
+.spotify iframe{width:100%;height:80px;border:0;display:block}
+#lightbox{position:fixed;inset:0;z-index:80;display:none;place-items:center;
+  background:rgba(3,4,12,.95);backdrop-filter:blur(10px);padding:6vh 5vw}
+#lightbox.on{display:grid}
+#lightbox img{max-width:100%;max-height:82vh;width:auto;height:auto;display:block;
+  filter:drop-shadow(0 30px 60px rgba(0,0,0,.7))}
+#lightbox iframe{width:min(92vw,1180px);aspect-ratio:16/9;height:auto;border:0}
+#lightbox .cap{position:absolute;left:0;right:0;bottom:26px;text-align:center;
+  font-size:11px;color:var(--mute);letter-spacing:1px;padding:0 6vw}
+#lightbox .close{position:absolute;top:18px;right:24px;font-size:11px;
+  letter-spacing:1px;color:var(--mute)}
+#lightbox .close:hover{color:#fff}
 .slot.act{border-style:solid;color:var(--paper)}
 .slot.act:hover{background:rgba(255,255,255,.1)}
 .pager{display:flex;gap:10px;margin-top:30px}
@@ -387,6 +410,12 @@ body.regions .case{cursor:crosshair}
     <button id="adminBtn">Curator</button>
   </div>
 </section>
+
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button class="close">Close ✕</button>
+  <div id="lightboxBody"></div>
+  <p class="cap" id="lightboxCap"></p>
+</div>
 
 <div id="adminbar">
   <span class="pill on" id="pubPill">Published</span>
@@ -564,14 +593,9 @@ function renderGig(i) {
             <div><dt>Stub</dt><dd data-edit>${esc(e.ref || '—')}</dd></div>
           </dl>
           ${e.note ? `<p class="note" data-edit>${esc(e.note)}</p>` : ''}
+          ${spotifyHTML(e)}
           <p class="sect">Media</p>
-          <div class="media">
-            <a class="slot act" target="_blank" rel="noopener"
-               href="https://www.youtube.com/results?search_query=${encodeURIComponent(
-                 e.artist + ' ' + e.venue + ' ' + e.date.slice(0,4))}">Search YouTube</a>
-            <div class="slot">No footage yet</div>
-            <div class="slot">No photos yet</div>
-          </div>
+          ${mediaHTML(e)}
           <div class="pager">
             <button id="prev">← Previous</button><button id="next">Next →</button>
           </div>
@@ -603,6 +627,72 @@ function lineupHTML(e) {
   }).join('');
   return `<div class="lineup">${stages}<p class="src">Line-ups via eFestivals</p></div>`;
 }
+
+/* ── media and music ─────────────────────────────────── */
+const YT = v => {
+  const m = String(v).match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/);
+  return m ? m[1] : /^[\w-]{11}$/.test(v) ? v : null;
+};
+
+function spotifyHTML(e) {
+  if (!e.spotify) return '';
+  // accepts a share link, a spotify: URI, or a bare ID
+  const m = String(e.spotify).match(/(track|album|episode|playlist)[/:]([A-Za-z0-9]+)/);
+  const [kind, id] = m ? [m[1], m[2]] : ['track', String(e.spotify).trim()];
+  if (!/^[A-Za-z0-9]+$/.test(id)) return '';
+  return `<div class="spotify"><iframe loading="lazy" title="Spotify player"
+    src="https://open.spotify.com/embed/${kind}/${id}?theme=0"
+    allow="clipboard-write; encrypted-media; picture-in-picture"></iframe></div>`;
+}
+
+function mediaHTML(e) {
+  const items = (e.media || []).filter(m => m.image || YT(m.youtube || ''));
+  if (!items.length) {
+    return `<div class="media">
+      <a class="slot act" target="_blank" rel="noopener"
+         href="https://www.youtube.com/results?search_query=${encodeURIComponent(
+           e.artist + ' ' + e.venue + ' ' + e.date.slice(0,4))}">Search YouTube</a>
+      <div class="slot">Nothing yet</div>
+    </div>`;
+  }
+  return `<div class="media">${items.map((m, i) => {
+    const id = YT(m.youtube || '');
+    // a still image stands in for the player, so nothing loads from YouTube
+    // until it is actually clicked
+    const src = id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : m.image;
+    return `<div class="mthumb" data-gig="${e.id}" data-i="${i}">
+      <img src="${src}" alt="${esc(m.caption || '')}" loading="lazy">
+      ${id ? '<span class="play">▶</span>' : ''}
+      ${m.caption ? `<span class="tag">${esc(m.caption)}</span>` : ''}
+    </div>`;
+  }).join('')}</div>`;
+}
+
+function openLightbox(gigId, i) {
+  const e = EVENTS.find(x => String(x.id) === String(gigId));
+  const m = e && (e.media || [])[i];
+  if (!m) return;
+  const id = YT(m.youtube || '');
+  $('#lightboxBody').innerHTML = id
+    ? `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1"
+         title="${esc(m.caption || 'Video')}" allow="autoplay; fullscreen"
+         allowfullscreen></iframe>`
+    : `<img src="${m.image}" alt="${esc(m.caption || '')}">`;
+  $('#lightboxCap').textContent = m.caption || '';
+  $('#lightbox').classList.add('on');
+}
+
+function closeLightbox() {
+  $('#lightbox').classList.remove('on');
+  $('#lightboxBody').innerHTML = '';        // stops playback
+}
+
+document.addEventListener('click', ev => {
+  const t = ev.target.closest?.('.mthumb');
+  if (t) { openLightbox(t.dataset.gig, +t.dataset.i); return; }
+  if (ev.target.closest?.('#lightbox .close') ||
+      ev.target.id === 'lightbox') closeLightbox();
+});
 
 /* ── venue and artist indexes ────────────────────────── */
 let idxSort = 'az';
@@ -856,6 +946,7 @@ addEventListener('keydown', ev => {
   if (idx > -1 && ev.key === 'ArrowRight') $('#next')?.click();
   if (idx > -1 && ev.key === 'ArrowLeft') $('#prev')?.click();
   if (ev.key === 'Escape') {
+    if ($('#lightbox').classList.contains('on')) { closeLightbox(); return; }
     if ($('#filterPanel').classList.contains('on')) { togglePanel(false); return; }
     location.hash = idx > -1 ? '#/archive' : '#/';
   }
