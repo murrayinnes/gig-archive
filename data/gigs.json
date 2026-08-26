@@ -1137,8 +1137,8 @@
       "fee": 6.5,
       "doors": "Gates 13:00",
       "ref": "GA1 3789",
-      "image": "img/tickets/boygenius_f.webp",
-      "thumb": "img/tickets/boygenius_t.webp",
+      "image": "img/tickets/boygenius_connect.png",
+      "thumb": "",
       "note": "",
       "foil": []
     },
