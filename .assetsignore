@@ -1,0 +1,7 @@
+# Files in the repo that shouldn't be uploaded as site assets.
+# Cloudflare deploys from the repo root, so without this it tries to upload
+# .git — whose pack file grows past the 25 MiB per-file limit.
+.git
+.gitattributes
+.assetsignore
+README.md
