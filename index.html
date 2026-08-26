@@ -224,8 +224,9 @@ dl.facts a:hover{border-color:var(--paper)}
   text-align:center;font-size:11px;color:var(--mute);padding:8px}
 .mthumb{position:relative;aspect-ratio:16/10;overflow:hidden;cursor:pointer;
   border:1px solid var(--hair);transition:.16s}
+.mthumb.vert{aspect-ratio:3/4}
 .mthumb:hover{border-color:#fff;transform:translateY(-2px)}
-.mthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.mthumb img,.mthumb video{width:100%;height:100%;object-fit:cover;display:block}
 .mthumb .tag{position:absolute;left:0;right:0;bottom:0;padding:5px 7px;font-size:11px;
   color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.85));
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -237,9 +238,10 @@ dl.facts a:hover{border-color:var(--paper)}
 #lightbox{position:fixed;inset:0;z-index:80;display:none;place-items:center;
   background:rgba(3,4,12,.95);backdrop-filter:blur(10px);padding:6vh 5vw}
 #lightbox.on{display:grid}
-#lightbox img{max-width:100%;max-height:82vh;width:auto;height:auto;display:block;
-  filter:drop-shadow(0 30px 60px rgba(0,0,0,.7))}
+#lightbox img,#lightbox video{max-width:100%;max-height:82vh;width:auto;height:auto;
+  display:block;filter:drop-shadow(0 30px 60px rgba(0,0,0,.7))}
 #lightbox iframe{width:min(92vw,1180px);aspect-ratio:16/9;height:auto;border:0}
+#lightbox iframe.vert{width:auto;height:min(80vh,880px);aspect-ratio:9/16}
 #lightbox .cap{position:absolute;left:0;right:0;bottom:26px;text-align:center;
   font-size:11px;color:var(--mute);letter-spacing:1px;padding:0 6vw}
 #lightbox .close{position:absolute;top:18px;right:24px;font-size:11px;
@@ -629,6 +631,9 @@ function lineupHTML(e) {
 }
 
 /* ── media and music ─────────────────────────────────── */
+// a /shorts/ link is the only reliable signal that a video is vertical
+const isShort = v => /\/shorts\//.test(String(v || ''));
+
 const YT = v => {
   const m = String(v).match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/);
   return m ? m[1] : /^[\w-]{11}$/.test(v) ? v : null;
@@ -646,7 +651,7 @@ function spotifyHTML(e) {
 }
 
 function mediaHTML(e) {
-  const items = (e.media || []).filter(m => m.image || YT(m.youtube || ''));
+  const items = (e.media || []).filter(m => m.image || m.video || YT(m.youtube || ''));
   if (!items.length) {
     return `<div class="media">
       <a class="slot act" target="_blank" rel="noopener"
@@ -657,12 +662,30 @@ function mediaHTML(e) {
   }
   return `<div class="media">${items.map((m, i) => {
     const id = YT(m.youtube || '');
-    // a still image stands in for the player, so nothing loads from YouTube
-    // until it is actually clicked
-    const src = id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : m.image;
-    return `<div class="mthumb" data-gig="${e.id}" data-i="${i}">
-      <img src="${src}" alt="${esc(m.caption || '')}" loading="lazy">
-      ${id ? '<span class="play">▶</span>' : ''}
+    const vert = isShort(m.youtube);
+    let thumb;
+    if (id) {
+      // a still stands in for the player, so nothing loads from YouTube
+      // until it is actually clicked. oardefault is the original-aspect frame,
+      // which for a Short is the full vertical one rather than a padded 16:9;
+      // it is not generated for every video, so fall back on error
+      thumb = `<img src="https://i.ytimg.com/vi/${id}/${vert ? 'oardefault' : 'hqdefault'}.jpg"
+                 alt="${esc(m.caption || '')}" loading="lazy"
+                 onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${id}/hqdefault.jpg'">`;
+    } else if (m.video) {
+      // an uploaded file has no thumbnail, so use a poster if one was given,
+      // otherwise let the browser paint the first frame — metadata only, so
+      // the file itself is not downloaded
+      thumb = m.poster
+        ? `<img src="${m.poster}" alt="${esc(m.caption || '')}" loading="lazy">`
+        : `<video src="${m.video}#t=0.1" preload="metadata" muted
+             playsinline tabindex="-1"></video>`;
+    } else {
+      thumb = `<img src="${m.image}" alt="${esc(m.caption || '')}" loading="lazy">`;
+    }
+    return `<div class="mthumb${vert ? ' vert' : ''}" data-gig="${e.id}" data-i="${i}">
+      ${thumb}
+      ${id || m.video ? '<span class="play">▶</span>' : ''}
       ${m.caption ? `<span class="tag">${esc(m.caption)}</span>` : ''}
     </div>`;
   }).join('')}</div>`;
@@ -673,11 +696,14 @@ function openLightbox(gigId, i) {
   const m = e && (e.media || [])[i];
   if (!m) return;
   const id = YT(m.youtube || '');
-  $('#lightboxBody').innerHTML = id
-    ? `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1"
-         title="${esc(m.caption || 'Video')}" allow="autoplay; fullscreen"
-         allowfullscreen></iframe>`
-    : `<img src="${m.image}" alt="${esc(m.caption || '')}">`;
+  $('#lightboxBody').innerHTML =
+    id      ? `<iframe class="${isShort(m.youtube) ? 'vert' : ''}"
+                 src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1"
+                 title="${esc(m.caption || 'Video')}" allow="autoplay; fullscreen"
+                 allowfullscreen></iframe>`
+    : m.video ? `<video src="${m.video}" controls autoplay playsinline
+                   ${m.poster ? `poster="${m.poster}"` : ''}></video>`
+    :           `<img src="${m.image}" alt="${esc(m.caption || '')}">`;
   $('#lightboxCap').textContent = m.caption || '';
   $('#lightbox').classList.add('on');
 }
