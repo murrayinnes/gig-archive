@@ -317,28 +317,6 @@
       "foil": []
     },
     {
-      "id": 6,
-      "date": "2007-10-26",
-      "artist": "Against Me!",
-      "support": "",
-      "venue": "The Garage",
-      "canon": "The Garage, Glasgow",
-      "addr": "490 Sauchiehall Street, Glasgow",
-      "city": "Glasgow",
-      "cat": "Music",
-      "promoter": "DF Concerts",
-      "face": 9,
-      "fee": 0,
-      "doors": "19:00",
-      "ref": "GA0 38",
-      "image": "img/tickets/212313184_f.webp",
-      "thumb": "img/tickets/212313184_t.webp",
-      "note": "",
-      "spotify": "",
-      "media": [],
-      "foil": []
-    },
-    {
       "id": 72,
       "date": "2007-11-09",
       "artist": "The Shins",
