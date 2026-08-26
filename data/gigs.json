@@ -1363,7 +1363,13 @@
       "thumb": "img/tickets/chappell-highland_t.webp",
       "note": "",
       "spotify": "",
-      "media": [],
+      "media": [
+        {
+          "image": "",
+          "youtube": "https://youtube.com/shorts/UDQ4L5qZZBc?feature=share",
+          "caption": ""
+        }
+      ],
       "foil": []
     },
     {
