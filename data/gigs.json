@@ -1291,7 +1291,13 @@
       "thumb": "img/tickets/chappell-academy_t.webp",
       "note": "",
       "spotify": "",
-      "media": [],
+      "media": [
+        {
+          "image": "",
+          "youtube": "https://youtube.com/shorts/UDQ4L5qZZBc?feature=share",
+          "caption": ""
+        }
+      ],
       "foil": []
     },
     {
