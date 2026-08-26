@@ -2,7 +2,7 @@
   "venues": [
     {
       "name": "AECC, Bridge of Don, Aberdeen",
-      "image": "/img/venues/aecc2.webp",
+      "image": "/img/venues/aecc.webp",
       "address": ""
     },
     {
@@ -12,7 +12,7 @@
     },
     {
       "name": "Barrowland Ballroom",
-      "image": "",
+      "image": "/img/venues/barrowlands.webp",
       "address": "244 Gallowgate, Glasgow"
     },
     {
@@ -77,17 +77,17 @@
     },
     {
       "name": "O2 Apollo Manchester",
-      "image": "",
+      "image": "/img/venues/o2apollo.webp",
       "address": ""
     },
     {
       "name": "OVO Hydro (SSE Hydro)",
-      "image": "",
+      "image": "/img/venues/hydro.webp",
       "address": "Exhibition Way, Finnieston, Glasgow"
     },
     {
       "name": "Royal Highland Showgrounds, Edinburgh",
-      "image": "",
+      "image": "/img/venues/royalhighland.webp",
       "address": "Ingliston, Edinburgh"
     },
     {
@@ -97,7 +97,7 @@
     },
     {
       "name": "Stereo, Glasgow",
-      "image": "",
+      "image": "/img/venues/stereo.webp",
       "address": "20-28 Renfield Lane, Glasgow"
     },
     {
@@ -107,12 +107,12 @@
     },
     {
       "name": "The Art School, Glasgow",
-      "image": "",
+      "image": "/img/venues/artschool.webp",
       "address": "20 Scott Street, Glasgow"
     },
     {
       "name": "The Garage, Glasgow",
-      "image": "",
+      "image": "/img/venues/thegarage.webp",
       "address": "490 Sauchiehall Street, Glasgow"
     },
     {
@@ -127,7 +127,7 @@
     },
     {
       "name": "Òran Mór, Glasgow",
-      "image": "",
+      "image": "/img/venues/oranmor.webp",
       "address": "731 Great Western Road, Glasgow"
     }
   ]
