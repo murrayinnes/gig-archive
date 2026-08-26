@@ -1341,26 +1341,6 @@
       "thumb": "",
       "note": "",
       "foil": []
-    },
-    {
-      "id": 79,
-      "date": "2017-07-07",
-      "artist": "Radiohead",
-      "support": "Belle & Sebastian",
-      "venue": "Glasgow Green",
-      "canon": "Glasgow Green",
-      "addr": "",
-      "city": "Glasgow",
-      "cat": "Music",
-      "promoter": "",
-      "face": 75,
-      "fee": 5,
-      "doors": "1",
-      "ref": "STANDING",
-      "image": "/img/tickets/radiohead_trnsmt.webp",
-      "thumb": "",
-      "note": "",
-      "foil": []
     }
   ]
 }
