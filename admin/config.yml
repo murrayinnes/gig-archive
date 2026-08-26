@@ -1,0 +1,143 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+# ─────────────────────────────────────────────────────────────────────
+# CHANGE THIS LINE to your own GitHub username and repository name,
+# then commit. Nothing else in this file needs editing to get started.
+# ─────────────────────────────────────────────────────────────────────
+backend:
+  name: github
+  repo: murrayinnes/gig-archive
+  branch: main
+
+media_folder: img
+public_folder: /img
+
+collections:
+  - name: archive
+    label: Archive
+    files:
+      # ── gigs ───────────────────────────────────────────────────────
+      - name: gigs
+        label: Gigs
+        file: data/gigs.json
+        icon: local_activity
+        fields:
+          - label: Gigs
+            name: gigs
+            widget: list
+            summary: '{{fields.date}} — {{fields.artist}}'
+            sortable_fields: [date, artist, canon]
+            fields:
+              - { label: ID, name: id, widget: number, value_type: int,
+                  hint: Must be unique. Use the next number up for a new gig. }
+              - { label: Date, name: date, widget: datetime,
+                  format: 'YYYY-MM-DD', date_format: 'DD/MM/YYYY', time_format: false,
+                  picker_utc: true }
+              - { label: Artist, name: artist, widget: string }
+              - { label: Support, name: support, widget: string, required: false }
+
+              - label: Venue (as printed on the ticket)
+                name: venue
+                widget: string
+                hint: Exactly what the stub says — ABC1, O2 ABC, King Tut's Wah Wah Hut.
+              - label: Venue (canonical)
+                name: canon
+                widget: relation
+                collection: archive
+                file: venues
+                value_field: venues.*.name
+                search_fields: [venues.*.name]
+                display_fields: [venues.*.name]
+                hint: >-
+                  This is what groups gigs onto a venue page. Pick from the list —
+                  a typo here creates a second, near-empty venue page.
+              - { label: Address, name: addr, widget: string, required: false }
+              - { label: City, name: city, widget: string }
+
+              - { label: Category, name: cat, widget: select,
+                  options: [Music, Festival], default: Music }
+              - { label: Promoter, name: promoter, widget: string, required: false }
+
+              - { label: Face value (£), name: face, widget: number,
+                  value_type: float, required: false }
+              - { label: Booking fee (£), name: fee, widget: number,
+                  value_type: float, required: false,
+                  hint: Leave empty if the ticket printed a single inclusive price. }
+              - { label: Doors / start, name: doors, widget: string, required: false }
+              - { label: Seat / ticket ref, name: ref, widget: string, required: false }
+
+              - label: Ticket image
+                name: image
+                widget: image
+                media_folder: /img/tickets
+                public_folder: img/tickets
+              - label: Ticket thumbnail
+                name: thumb
+                widget: image
+                required: false
+                media_folder: /img/tickets
+                public_folder: img/tickets
+                hint: Optional. The full image is used if this is empty.
+
+              - { label: Note, name: note, widget: text, required: false,
+                  hint: Shown under the ticket details. Leave empty to hide it. }
+
+              - label: Foil areas
+                name: foil
+                widget: list
+                required: false
+                collapsed: true
+                summary: '{{fields.shape}} @ {{fields.x}}, {{fields.y}}'
+                hint: >-
+                  Easier to set on the site itself — open a gig, press A, then
+                  Foil areas, and drag over the hologram.
+                fields:
+                  - { label: Shape, name: shape, widget: select,
+                      options: [ellipse, rect], default: ellipse }
+                  - { label: X, name: x, widget: number, value_type: float }
+                  - { label: Y, name: y, widget: number, value_type: float }
+                  - { label: Width, name: w, widget: number, value_type: float }
+                  - { label: Height, name: h, widget: number, value_type: float }
+
+      # ── venues ─────────────────────────────────────────────────────
+      - name: venues
+        label: Venues
+        file: data/venues.json
+        icon: location_on
+        fields:
+          - label: Venues
+            name: venues
+            widget: list
+            summary: '{{fields.name}}'
+            sortable_fields: [name]
+            fields:
+              - { label: Name, name: name, widget: string,
+                  hint: Must match the canonical venue on the gigs exactly. }
+              - label: Image
+                name: image
+                widget: image
+                required: false
+                media_folder: /img/venues
+                public_folder: img/venues
+              - { label: Address, name: address, widget: string, required: false }
+
+      # ── artists ────────────────────────────────────────────────────
+      - name: artists
+        label: Artists
+        file: data/artists.json
+        icon: person
+        fields:
+          - label: Artists
+            name: artists
+            widget: list
+            summary: '{{fields.name}}'
+            sortable_fields: [name]
+            fields:
+              - { label: Name, name: name, widget: string,
+                  hint: Must match the artist name on the gigs exactly. }
+              - label: Image
+                name: image
+                widget: image
+                required: false
+                media_folder: /img/artists
+                public_folder: img/artists
