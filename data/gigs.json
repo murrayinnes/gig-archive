@@ -1573,6 +1573,28 @@
         }
       ],
       "foil": []
+    },
+    {
+      "id": 81,
+      "date": "2025-05-20",
+      "artist": "Annie Di Russo",
+      "support": "",
+      "venue": "King Tuts Wah Wah Hut",
+      "canon": "King Tut's Wah Wah Hut",
+      "addr": "",
+      "city": "Glasgow",
+      "cat": "Music",
+      "promoter": "",
+      "face": null,
+      "fee": null,
+      "doors": "7",
+      "ref": "",
+      "image": "/img/tickets/annie.png",
+      "thumb": "",
+      "note": "",
+      "spotify": "",
+      "media": [],
+      "foil": []
     }
   ]
 }
