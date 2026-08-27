@@ -1225,7 +1225,23 @@
       "thumb": "",
       "note": "",
       "spotify": "",
-      "media": [],
+      "media": [
+        {
+          "image": "/img/media/PXL_20230827_182850699.jpg",
+          "youtube": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/media/PXL_20230827_182828129.jpg",
+          "youtube": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/media/PXL_20230827_193608475.jpg",
+          "youtube": "",
+          "caption": ""
+        }
+      ],
       "foil": []
     },
     {
@@ -1283,6 +1299,11 @@
         {
           "image": "",
           "youtube": "https://youtube.com/shorts/_l0Bu5H0JVk",
+          "caption": ""
+        },
+        {
+          "image": "/img/media/PXL_20240915_202437317.jpg",
+          "youtube": "",
           "caption": ""
         }
       ],
@@ -1384,7 +1405,13 @@
       "thumb": "img/tickets/ethel_t.webp",
       "note": "",
       "spotify": "",
-      "media": [],
+      "media": [
+        {
+          "image": "/img/media/PXL_20251009_170104373.PORTRAIT.ORIGINAL.jpg",
+          "youtube": "",
+          "caption": ""
+        }
+      ],
       "foil": []
     },
     {
@@ -1406,7 +1433,18 @@
       "thumb": "img/tickets/jasmine_t.webp",
       "note": "",
       "spotify": "",
-      "media": [],
+      "media": [
+        {
+          "image": "/img/media/PXL_20250521_205007082.PORTRAIT.ORIGINAL.jpg",
+          "youtube": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/media/PXL_20250521_205019721.MP.jpg",
+          "youtube": "",
+          "caption": ""
+        }
+      ],
       "foil": []
     },
     {
