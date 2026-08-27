@@ -1507,6 +1507,34 @@
       "spotify": "",
       "media": [],
       "foil": []
+    },
+    {
+      "id": 80,
+      "date": "2017-09-15",
+      "artist": "Mic Righteous",
+      "support": "Lowkey",
+      "venue": "ABC2",
+      "canon": "O2 ABC Glasgow",
+      "addr": "",
+      "city": "Glasgow",
+      "cat": "Music",
+      "promoter": "",
+      "face": null,
+      "fee": null,
+      "doors": "7",
+      "ref": "",
+      "image": "/img/tickets/micrighteous.png",
+      "thumb": "",
+      "note": "",
+      "spotify": "",
+      "media": [
+        {
+          "image": "/img/media/IMG_20170915_215856.jpg",
+          "youtube": "",
+          "caption": ""
+        }
+      ],
+      "foil": []
     }
   ]
 }
