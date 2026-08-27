@@ -1450,7 +1450,13 @@
       "thumb": "img/tickets/lucy-glasgow_t.webp",
       "note": "",
       "spotify": "",
-      "media": [],
+      "media": [
+        {
+          "image": "",
+          "youtube": "https://youtube.com/shorts/yeIu-Ww4_YM",
+          "caption": ""
+        }
+      ],
       "foil": []
     },
     {
